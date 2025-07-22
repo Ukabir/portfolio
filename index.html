@@ -32,6 +32,14 @@
       z-index: -1;
       background: var(--bg-color);
     }
+    #btn {
+      font-size: 20px;
+      transition: 0.3s linear all;
+      cursor: pointer;
+    }
+    #btn:hover {
+      background-color: var(--main-color);
+    }
     .navbar {
       position: fixed;
       top: 0;
@@ -44,6 +52,7 @@
       justify-content: center;
       backdrop-filter: blur(10px);
     }
+
     .navbar ul {
       display: flex;
       gap: 2rem;
@@ -60,10 +69,28 @@
     .section {
       background: var(--section-bg);
       border-radius: 12px;
-      padding: 70px 20px 40px;
-      max-width: 1100px;
+      padding: 40px 20px 40px;
+      max-width: 80%;
       margin: 80px auto;
       box-shadow: 0 0 10px rgba(0, 188, 212, 0.1);
+    }
+    .sectL {
+      display: flex;
+    }
+    .contact-1 {
+      padding: 40px;
+      width: 45%;
+      border-right: 2px solid var(--main-color);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .contact-1 h2 {
+      text-decoration: underline;
+      letter-spacing: 5px;
+    }
+    .contact-2 {
+      width: 50%;
     }
     .hero-flex {
       display: flex;
@@ -120,16 +147,21 @@
       color: var(--main-color);
     }
     .projects-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
+      column-count: 3;
+      column-gap: 1rem;
     }
     .project-card {
+      margin-bottom: 20px;
       background: #2a2a2a;
+      max-height: fit-content;
       border-radius: 10px;
       padding: 1rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      text-align: center;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      break-inside: avoid;
     }
     .project-card img {
       max-width: 100%;
@@ -157,22 +189,41 @@
       right: 20px;
       background: var(--main-color);
       color: #000;
-      padding: 10px 15px;
-      border-radius: 50%;
+      padding: 10px 15px;border-radius: 50%;
       font-size: 1.2rem;
       cursor: pointer;
       box-shadow: 0 0 10px rgba(0, 188, 212, 0.4);
       display: none;
       z-index: 999;
     }
-    @media (min-width: 600px) {
+    h3 a {
+      color: #fff;
+      transition: all 0.2s linear;
+    }
+    h3 a:hover {
+      color: #00bcd4;
+    }
+    /* Medium screens: 2 columns */
+    @media (max-width: 800px) {
       .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+        column-count: 2;
+      }
+      .sectL {
+        flex-direction: column;
+      }
+      .contact-1 {
+        width: 80%;
+        border: 0;
+      }
+      .contact-2 {
+        width: 100%;
       }
     }
-    @media (min-width: 992px) {
+
+    /* Small screens: 1 column */
+    @media (max-width: 450px) {
       .projects-grid {
-        grid-template-columns: repeat(3, 1fr);
+        column-count: 1;
       }
     }
   </style>
@@ -182,7 +233,6 @@
 <nav class="navbar">
   <ul>
     <li><a href="#hero">Home</a></li>
-    <li><a href="#summary">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -191,11 +241,10 @@
 <div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
 <section id="hero" class="section" data-aos="zoom-in">
   <div class="hero-flex">
-    <img src="your-image.jpg" alt="My Profile" class="profile-img">
+    <img src="Snapchat-1106375230.jpg" alt="My Profile" class="profile-img">
     <div class="hero-text">
       <h1>Hi, I'm Abdulkabir Umar Faruq</h1>
       <p>I am a Fullstack Developer.</p>
-      <button>Learn More</button>
     </div>
   </div>
 </section>
@@ -220,38 +269,97 @@
   </div>
 </section>
 <section id="projects" class="section" data-aos="zoom-in">
-  <h2>Projects</h2>
+  <h2 style="margin-bottom: 15px;">Projects</h2>
   <div class="projects-grid">
     <div class="project-card">
-      <img src="project1.jpg" alt="Project 1">
-      <h3>ITEMHIVE Marketplace</h3>
-      <p><strong>Technologies:</strong> HTML, CSS, Firebase</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <img src="itemhive.png" alt="Project 1">
+      <h3><a href="https://itemhive.ng/">ITEMHIVE</a></h3>
+      <p><strong>Technologies:</strong> HTML, CSS, JavaScript, Bootstrap, Firebase</p>
+      <p>A marketplace centered at university students</p>
     </div>
     <div class="project-card">
-      <img src="project2.jpg" alt="Project 2">
-      <h3>Student Result Portal</h3>
-      <p><strong>Technologies:</strong> Firebase Auth, JS</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <img src="freelancer.png" alt="Project 2">
+      <h3><a href="https://ukabir.github.io/PROJECT/">Freelancer Clone</a></h3>
+      <p><strong>Technologies:</strong>HTML, CSS</p>
+      <p>Front-end only of the freelancer website</p>
     </div>
     <div class="project-card">
-      <img src="project3.jpg" alt="Project 3">
-      <h3>Course Registration</h3>
-      <p><strong>Technologies:</strong> HTML, CSS, Firestore</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <img src="netflix.png" alt="Project 3">
+      <h3><a href="https://ukabir.github.io/netflix/">Netflix Landing page Clone</a></h3>
+      <p><strong>Technologies:</strong> HTML, CSS</p>
+      <p>Front-end only of the netflix landing page</p>
+    </div>
+    <div class="project-card">
+      <img src="freea.png" alt="Project 3">
+      <h3><a href="https://ukabir.github.io/FREEA/">Free Portfolio</a></h3>
+      <p><strong>Technologies:</strong> HTML, CSS, JavaScript, Firebase</p>
+      <p>Created a website to help people create free web portfolio, now DOWN</p>
+    </div>
+    
+    <div class="project-card">
+      <img src="whatnot.png" alt="Project 3">
+      <h3><a href="https://ukabir.github.io/whatnot/">Whatnot Landing page Clone</a></h3>
+      <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+      <p>Front-end only of the whatnot landing page</p>
+    </div>
+    <div class="project-card">
+      <img src="facebook.png" alt="Project 3">
+      <h3><a href="https://ukabir.github.io/facebook/">Facebook Login Page Clone</a></h3>
+      <p><strong>Technologies:</strong> HTML, CSS</p>
+      <p>Front-end only of the facebook login page</p>
+    </div>
+    <div class="project-card">
+      <img src="whatsapp.png" alt="Project 3">
+      <h3><a href="https://ukabir.github.io/whatsapp/">Whatsapp for mobile Clone</a></h3>
+      <p><strong>Technologies:</strong> HTML, CSS</p>
+      <p>Front-end only of the whatsapp mobile app</p>
+    </div>
+    <div class="project-card">
+      <img src="tesla.png" alt="Project 3">
+      <h3><a href="https://ukabir.github.io/tesla/">Tesla Landing page Clone</a></h3>
+      <p><strong>Technologies:</strong> HTML, CSS</p>
+      <p>Front-end only of Tesla landing page</p>
+    </div>
+    <div class="project-card">
+      <img src="guessing.png" alt="Project 3">
+      <h3><a href="guessing game.html">Guessing gmae</a></h3>
+      <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+      <p>A simple guessing game, guess numbers and see if you're right</p>
+    </div>
+    
+    <div class="project-card">
+      <img src="calculator.png" alt="Project 3">
+      <h3><a href="calculator.html">Simple Calculator</a></h3>
+      <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+      <p>A simple Calculator</p>
     </div>
   </div>
 </section>
-<section id="contact" class="section" data-aos="zoom-in">
-  <h2>Contact Me</h2>
-  <form action="https://formspree.io/f/mayrelzr" method="POST">
+<section id="contact" class="section sectL" data-aos="zoom-in">
+  <div class="contact-1">
+    <h2>Contact Me</h2>
+    <div>
+      <h4>EMAIL</h4>
+      <p>kayteebderserker@gmail.com</p>
+    </div>
+    <div>
+      <h4>PHONE NO</h4>
+      <p>09159153951</p>
+      <p>08062255406 / Whatsapp</p>
+    </div>
+    <div>
+      <h3>LOCATION</h3>
+      <p>Ibadan, Oyo state</p>
+    </div>
+  </div>
+  <form action="https://formspree.io/f/mayrelzr" method="POST" class="contact-2">
     <input type="text" name="name" placeholder="Your Name" required />
     <input type="email" name="email" placeholder="Your Email" required />
     <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
+    <button id="btn" type="submit">Send Message</button>
   </form>
 </section>
-<footer>
+<footer style="text-align: center; margin-bottom: 20px;">
   &copy; 2025 Abdulkabir Umar. All rights reserved.
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -259,8 +367,7 @@
 <script>
   AOS.init();
   window.onscroll = () => {
-    const btn = document.getElementById("backToTop");
-    btn.style.display = document.documentElement.scrollTop > 300 ? "block" : "none";
+    const btn = document.getElementById("backToTop");btn.style.display = document.documentElement.scrollTop > 300 ? "block" : "none";
   };
   particlesJS("particles-js", {
   particles: {
